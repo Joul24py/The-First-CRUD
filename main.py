@@ -58,20 +58,33 @@ def addTuple(name = None, key = None, salary = None):
 import tkinter as tk
 from tkinter import font
 
+app = tk.Tk()
+app.geometry("640x480")
+app.title("UAA-ICI-S1-LC1-FinalProject Op.2")
+app.configure(bg = '#292929')
+
+title_font = font.Font(family = "Arial", size = 18)
+title_label = tk.Label(app, text = "The First CRUD", font = title_font, bg = '#292929', fg = '#FFFFFF')
+title_label.pack(pady=20, padx=20)
+
+tableFrame = tk.Frame(app, bg = '#292929', padx = 30, pady = 30)
+
 def openFrameAdd():
     appAdd = tk.Tk()
     appAdd.geometry("480x360")
+    appAdd.title("Add new user")
+    appAdd.configure(bg = '#292929')
     
-    frameAdd = tk.Frame(appAdd, width=480, height=360)
+    frameAdd = tk.Frame(appAdd, bg = '#292929', padx = 20, pady = 40)
     
-    entry1 = tk.Entry(appAdd)
-    entry2 = tk.Entry(appAdd)
-    entry3 = tk.Entry(appAdd)
+    entry1 = tk.Entry(frameAdd)
+    entry2 = tk.Entry(frameAdd)
+    entry3 = tk.Entry(frameAdd)
     
     # Etiquetas para los campos de entrada
-    label1 = tk.Label(appAdd, text="Campo 1:")
-    label2 = tk.Label(appAdd, text="Campo 2:")
-    label3 = tk.Label(appAdd, text="Campo 3:")
+    label1 = tk.Label(frameAdd, text="Nombre completo del usuario:", bg = '#292929', fg = '#FFFFFF')
+    label2 = tk.Label(frameAdd, text="Clave del usuario:", bg = '#292929', fg = '#FFFFFF')
+    label3 = tk.Label(frameAdd, text="Salario del usuario:", bg = '#292929', fg = '#FFFFFF')
     
     label1.grid(row=0, column=0, padx=20, pady=10)
     entry1.grid(row=0, column=1, padx=20, pady=10)
@@ -79,6 +92,8 @@ def openFrameAdd():
     entry2.grid(row=1, column=1, padx=20, pady=10)
     label3.grid(row=2, column=0, padx=20, pady=10)
     entry3.grid(row=2, column=1, padx=20, pady=10)
+    
+    frameAdd.pack()
     
     def acceptAddEntry():
         if entry1.get() == '':
@@ -99,47 +114,48 @@ def openFrameAdd():
         newTuple = addTuple(value1, value2, value3)
         db.append(newTuple)
         print(db)
-        label.pack_forget()
+        print(len(db))
+        dbEmptyLabel.pack_forget()
+        if(len(db) == 1):
+            tableTitle1 = tk.Label(tableFrame, text="Nombre", bg = '#292929', fg = '#FFFFFF', width = 30, height = 2, relief=tk.RAISED, borderwidth=2)
+            tableTitle2 = tk.Label(tableFrame, text="Clave", bg = '#292929', fg = '#FFFFFF', width = 20, height = 2, relief=tk.RAISED, borderwidth=2)
+            tableTitle3 = tk.Label(tableFrame, text="Salario", bg = '#292929', fg = '#FFFFFF', width = 20, height = 2, relief=tk.RAISED, borderwidth=2)
+            tableTitle4 = tk.Label(tableFrame, text="", bg = '#292929', fg = '#FFFFFF', width = 20, height = 2, relief=tk.RAISED, borderwidth=2)
+            tableTitle5 = tk.Label(tableFrame, text="", bg = '#292929', fg = '#FFFFFF', width = 20, height = 2, relief=tk.RAISED, borderwidth=2)
+            
+            tableTitle1.grid(row = 0, column = 0)
+            tableTitle2.grid(row = 0, column = 1)
+            tableTitle3.grid(row = 0, column = 2)
+            tableTitle4.grid(row = 0, column = 3)
+            tableTitle5.grid(row = 0, column = 4)
+        
+        tableContent1 = tk.Label(tableFrame, text=newTuple[0], bg = '#292929', fg = '#FFFFFF', width = 30, height = 2, relief=tk.RAISED, borderwidth=2)
+        tableContent2 = tk.Label(tableFrame, text=newTuple[1], bg = '#292929', fg = '#FFFFFF', width = 20, height = 2, relief=tk.RAISED, borderwidth=2)
+        tableContent3 = tk.Label(tableFrame, text=newTuple[2], bg = '#292929', fg = '#FFFFFF', width = 20, height = 2, relief=tk.RAISED, borderwidth=2)
+        tableContent4 = tk.Label(tableFrame, text="Editar", bg = '#202020', fg = '#FFFFFF', width = 20, height = 2, relief=tk.RAISED, borderwidth=2)
+        tableContent5 = tk.Label(tableFrame, text="Eliminar", bg = '#FF0000', fg = '#FFFFFF', width = 20, height = 2, relief=tk.RAISED, borderwidth=2)
+        
+        tableContent1.grid(row = len(db), column = 0)
+        tableContent2.grid(row = len(db), column = 1)
+        tableContent3.grid(row = len(db), column = 2)
+        tableContent4.grid(row = len(db), column = 3)
+        tableContent5.grid(row = len(db), column = 4)
+        
+        tableFrame.pack()
+        
         appAdd.destroy()
     
-    acceptButton = tk.Button(appAdd, text="Aceptar", command=acceptAddEntry)
-    acceptButton.grid(row = 3, column = 1, padx = 20, pady = 30)
-    
-    frameAdd.pack()
-
-app = tk.Tk()
-app.geometry("640x480")
-
-title_font = font.Font(family="Arial", size=18)
-label = tk.Label(app, text="UAA-ICI-S1-LC1-FinalProject", font = title_font)
-label.pack(pady=20, padx=20)
+    acceptButton = tk.Button(appAdd, text="Aceptar", bg = '#1b6600', fg = '#FFFFFF', command=acceptAddEntry)
+    acceptButton.pack(padx = 20, pady = 30)
 
 db = []
 
-if(len(db) == 0):
-    warning_font = font.Font(family="Arial", size=14)
-    label = tk.Label(app, text="No registers found", font = warning_font)
-    label.pack(pady=50, padx=20)
-else:
-    # Aquí va el output de la tabla
-    frame_grid = tk.Frame(app)
-    frame_grid.pack(side="right", padx=10)
-    
-    # Crear etiquetas en el Frame anidado con grid
-    textTable1 = tk.Label(frame_grid, text="Nombre")
-    textTable2 = tk.Label(frame_grid, text="Clave")
-    textTable3 = tk.Label(frame_grid, text="Salario")
-    
-    textTable1.grid(row=0, column=0, padx=10, pady=10)
-    textTable2.grid(row=0, column=1, padx=10, pady=10)
-    textTable3.grid(row=0, column=2, padx=10, pady=10)
-    
-    warning_font = font.Font(family="Arial", size=14)
-    label = tk.Label(app, text="No registers found", font = warning_font)
-    label.pack(pady=50, padx=20)
-
-add_button = tk.Button(app, text="Añadir registro", command=openFrameAdd)
+add_button = tk.Button(app, text="Añadir registro", bg = "#1b6600", fg = "#FFFFFF", command=openFrameAdd)
 add_button.pack(pady = 10, padx = 10)
+
+warning_font = font.Font(family="Arial", size=14)
+dbEmptyLabel = tk.Label(app, text="No registers found", bg = '#292929', fg = '#FFFFFF', font = warning_font)
+dbEmptyLabel.pack(pady=50, padx=20)
     
 
 app.mainloop()

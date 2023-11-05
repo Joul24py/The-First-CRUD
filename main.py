@@ -1,3 +1,4 @@
+#%% The project logic (no GUI)
 import random
 from unidecode import unidecode
 
@@ -50,14 +51,10 @@ def addTuple(name = None, key = None, salary = None):
     if key == None:
         key = setKey(name)
     if salary == None:
-        salary = random.randint(10, 80) * 100
+        salary = random.randint(10, 1300) * 100
     return [name, key, salary]
 
-    
-
-
-
-
+#%% The project GUI
 import tkinter as tk
 from tkinter import font
 

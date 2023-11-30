@@ -69,6 +69,7 @@ title_label.pack(pady=20, padx=20)
 
 tableFrame = tk.Frame(app, bg = '#292929', padx = 30, pady = 30)
 
+# Opens new frame to add user information
 def openFrameAdd():
     appAdd = tk.Tk()
     appAdd.geometry("480x360")
@@ -95,6 +96,7 @@ def openFrameAdd():
     
     frameAdd.pack()
     
+    # Appends the information to the db list and shows it in the main frame
     def acceptAddEntry():
         if entry1.get() == '':
             value1 = None

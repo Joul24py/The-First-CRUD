@@ -73,6 +73,28 @@ function setKey(name)
     return finalKey;
 }
 
+function addTuple(name = undefined, key = undefined, salary = undefined)
+{
+    if(name == undefined)
+    {
+        name = randomName();
+    }
+    if(key == undefined)
+    {
+        key = setKey(name);
+    }
+    if(salary == undefined)
+    {
+        salary = (Math.floor(Math.random() * (1300 - 10 + 1) + 10)) * 100;
+    }
+
+    return {
+        name: name,
+        key: key,
+        salary: salary
+    }
+}
+
 // Functionality to the add registration
 var buttonAddRegistration = document.getElementsByClassName("addButton");
 

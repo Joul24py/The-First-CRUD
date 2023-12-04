@@ -51,6 +51,28 @@ function randomName()
     return name
 }
 
+function setKey(name)
+{
+    var i;
+    
+    name = name.toUpperCase();
+    name = name.split(" ");
+
+    var finalKey = "";
+
+    for(i = 0; i < name.length; i++)
+    {
+        finalKey = finalKey + name[i].substring(0, 2);
+    }
+
+    finalKey = finalKey + Math.floor(Math.random() * (9 - 0 + 1) + 0);
+    finalKey = finalKey + Math.floor(Math.random() * (9 - 0 + 1) + 0);
+    finalKey = finalKey + Math.floor(Math.random() * (9 - 0 + 1) + 0);
+    finalKey = finalKey + Math.floor(Math.random() * (9 - 0 + 1) + 0);
+
+    return finalKey;
+}
+
 // Functionality to the add registration
 var buttonAddRegistration = document.getElementsByClassName("addButton");
 

@@ -65,6 +65,32 @@ h1, p, label
     width: 75vw;
 }
 
+.divTable table tr th:nth-child(4)
+{
+    background-color: #202020;
+}
+
+.divTable table tr th:nth-child(5)
+{
+    background-color: #ff0000;
+}
+
+.divTable table tr th:nth-child(4):hover, .divTable table tr th:nth-child(5):hover
+{
+    cursor: pointer;
+}
+
+.divTable table tr:first-child th
+{
+    background-color: #292929;
+    cursor: default;
+}
+
+.divTable table tr:first-child th:hover
+{
+    cursor: default;
+}
+
 .divFormAdd
 {
     margin: 4vh 0;

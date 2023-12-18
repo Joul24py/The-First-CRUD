@@ -155,11 +155,9 @@ buttonAddForm[0].addEventListener("click", function()
 
     let newEditTable = document.createElement("th");
     newEditTable.innerHTML = "Edit";
-    newEditTable.style.backgroundColor = "#202020"
 
     let newRemoveTable = document.createElement("th");
     newRemoveTable.innerHTML = "Remove";
-    newRemoveTable.style.backgroundColor = "#ff0000";
 
     let newRow = document.createElement("tr");
     newRow.appendChild(newNameTable);

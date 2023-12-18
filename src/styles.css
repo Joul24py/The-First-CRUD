@@ -51,6 +51,20 @@ h1, p, label
     border: 4px inset #292929;
 }
 
+.divTable
+{
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5vh auto;
+    width: 75%;
+    display: none;
+}
+
+.divTable table
+{
+    width: 75vw;
+}
+
 .divFormAdd
 {
     margin: 4vh 0;

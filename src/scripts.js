@@ -148,5 +148,9 @@ buttonAddForm[0].addEventListener("click", function()
         var noRegistersDiv = document.getElementsByClassName("noRegistersDiv");
         noRegisters = noRegistersDiv[0];
         noRegisters.style.display = "none";
+
+        var divTable = document.getElementsByClassName("divTable");
+        table = divTable[0];
+        table.style.display = "block";
     }
 });

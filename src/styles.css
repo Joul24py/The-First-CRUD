@@ -72,7 +72,7 @@ h1, p, label
 
 .divTable table tr th:nth-child(5)
 {
-    background-color: #ff0000;
+    background-color: #660500;
 }
 
 .divTable table tr th:nth-child(4):hover, .divTable table tr th:nth-child(5):hover

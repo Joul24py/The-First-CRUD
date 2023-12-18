@@ -75,15 +75,15 @@ function setKey(name)
 
 function addTuple(name = undefined, key = undefined, salary = undefined)
 {
-    if(name == undefined)
+    if(name == "")
     {
         name = randomName();
     }
-    if(key == undefined)
+    if(key == "")
     {
         key = setKey(name);
     }
-    if(salary == undefined)
+    if(salary == "")
     {
         salary = (Math.floor(Math.random() * (1300 - 10 + 1) + 10)) * 100;
     }
@@ -95,12 +95,58 @@ function addTuple(name = undefined, key = undefined, salary = undefined)
     }
 }
 
-// Functionality to the add registration
+// Functionality to open the add registration
 var buttonAddRegistration = document.getElementsByClassName("addButton");
 
 buttonAddRegistration[0].addEventListener("click", function()
 {
     var formAddRegistration = document.getElementsByClassName("divFormAdd");
     var form = formAddRegistration[0];
-    form.style.display = "block"
+    var button = buttonAddRegistration[0];
+    if(form.style.display == "block")
+    {
+        form.style.display = "none";
+        button.textContent = "Add registration";
+        button.style.backgroundColor = "#1b6600";
+        document.getElementById("name").value = "";
+        document.getElementById("id").value = "";
+        document.getElementById("salary").value = "";
+    }
+    else
+    {
+        form.style.display = "block";
+        button.textContent = "Cancel";
+        button.style.backgroundColor = "#660500";
+    }
+});
+
+// Functionality to the add registration
+var buttonAddForm = document.getElementsByClassName("addButtonForm");
+
+buttonAddForm[0].addEventListener("click", function()
+{
+    // Styling the page
+    var formAddRegistration = document.getElementsByClassName("divFormAdd");
+    var form = formAddRegistration[0];
+    var button = buttonAddRegistration[0];
+    form.style.display = "none";
+    button.textContent = "Add registration";
+    button.style.backgroundColor = "#1b6600";
+
+    // Getting the info
+    var name = document.getElementById("name").value;
+    var id = document.getElementById("id").value;
+    var salary = document.getElementById("salary").value;
+    document.getElementById("name").value = "";
+    document.getElementById("id").value = "";
+    document.getElementById("salary").value = "";
+
+    db.push(addTuple(name, id, salary));
+
+    if(db.length == 1)
+    {
+        var noRegistersDiv = document.getElementsByClassName("noRegistersDiv");
+        noRegisters = noRegistersDiv[0];
+        noRegisters.style.display = "none";
+    }
 });

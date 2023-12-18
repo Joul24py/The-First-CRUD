@@ -34,8 +34,6 @@ h1, p, label
     margin: 2vh 0;
     padding: 2vh 0;
     border: 4px outset #292929;
-    transition-duration: 1s;
-    transition-property: background-color;
 
     /* Evitar la selección de texto del botón */
     -webkit-user-select: none; /* Safari */
@@ -46,9 +44,6 @@ h1, p, label
 .addButton:hover
 {
     cursor: pointer;
-    background-color: #1b7f00;
-    transition-duration: 1s;
-    transition-property: background-color;
 }
 
 .addButton:active
@@ -68,6 +63,32 @@ h1, p, label
 {
     background-color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.addButtonForm
+{
+    width: 140px;
+    height: 15px;
+    line-height: 15px;
+    background-color: #1b6600;
+    margin: 4vh auto;
+    padding: 2vh 0;
+    border: 4px outset #292929;
+
+    /* Evitar la selección de texto del botón */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.addButtonForm:hover
+{
+    cursor: pointer;
+}
+
+.addButtonForm:active
+{
+    border: 4px inset #292929;
 }
 
 /* Styles for mobile devices */

@@ -4,7 +4,7 @@
     background-color: #292929;
 }
 
-h1, p
+h1, p, label
 {
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
@@ -31,6 +31,7 @@ h1, p
 .addButton
 {
     background-color: #1b6600;
+    margin: 2vh 0;
     padding: 2vh 0;
     border: 4px outset #292929;
     transition-duration: 1s;
@@ -53,6 +54,20 @@ h1, p
 .addButton:active
 {
     border: 4px inset #292929;
+}
+
+.divFormAdd
+{
+    margin: 4vh 0;
+    padding: 2vh 0;
+    text-align: center;
+    display: none;
+}
+
+.divFormAdd form input
+{
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Styles for mobile devices */

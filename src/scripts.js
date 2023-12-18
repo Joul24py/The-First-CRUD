@@ -100,5 +100,7 @@ var buttonAddRegistration = document.getElementsByClassName("addButton");
 
 buttonAddRegistration[0].addEventListener("click", function()
 {
-    //
+    var formAddRegistration = document.getElementsByClassName("divFormAdd");
+    var form = formAddRegistration[0];
+    form.style.display = "block"
 });

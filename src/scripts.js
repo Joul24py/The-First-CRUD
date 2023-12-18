@@ -1,19 +1,19 @@
-var db = [];
+let db = [];
 
 function randomName()
 {
-    var name = "";
-    var nameNumber;
-    var i;
+    let name = "";
+    let nameNumber;
+    let i;
 
-    var girlNames = ['María', 'Andrea', 'Ana', 'Lucía', 'Sofía', 'Martina', 'María', 'Julia', 'Paula', 'Valeria', 'Emma', 'Daniela', 'Carla', 'Alba', 'Noa', 'Alma', 'Sara', 'Carmen', 'Vega', 'Lara', 'Mia', 'Valentina', 'Olivia', 'Claudia', 'Jimena', 'Lola', 'Chloe', 'Aitana', 'Abril', 'Ana', 'Laia', 'Triana', 'Candela', 'Alejandra', 'Elena', 'Vera', 'Manuela', 'Adriana', 'Inés', 'Marta', 'Carlota', 'Irene', 'Victoria', 'Blanca', 'Marina', 'Laura', 'Rocío', 'Alicia', 'Clara', 'Nora', 'Lia', 'Ariadna', 'Zoe', 'Amira', 'Gala', 'Celia', 'Leire', 'Eva', 'Ángela', 'Andrea', 'África', 'Luna', 'Ainhoa', 'Ainara', 'India', 'Nerea', 'Ona', 'Elsa', 'Isabel', 'Leyre', 'Gabriela', 'Aina', 'Cayetana', 'Iria', 'Jana', 'Mar', 'Cloe', 'Lina', 'Julieta', 'Adara', 'Naia', 'Iris', 'Nour', 'Mara', 'Helena', 'Yasmín', 'Natalia', 'Arlet', 'Diana', 'Aroa', 'Amaia', 'Cristina', 'Nahia', 'Isabella', 'Malak', 'Elia', 'Carolina', 'Berta', 'Fátima', 'Nuria', 'Azahara', 'Macarena', 'Aurora'];
-    var boyNames = ['Juan', 'Antonio', 'Pedro', 'Hugo', 'Mateo', 'Martín', 'Lucas', 'Leo', 'Daniel', 'Alejandro', 'Manuel', 'Pablo', 'Álvaro', 'Adrián', 'Enzo', 'Mario', 'Diego', 'David', 'Oliver', 'Marcos', 'Thiago', 'Marco', 'Álex', 'Javier', 'Izan', 'Bruno', 'Miguel', 'Antonio', 'Gonzalo', 'Liam', 'Gael', 'Marc', 'Carlos', 'Juan', 'Ángel', 'Dylan', 'Nicolás', 'José', 'Sergio', 'Gabriel', 'Luca', 'Jorge', 'Darío', 'Íker', 'Samuel', 'Eric', 'Adam', 'Héctor', 'Francisco', 'Rodrigo', 'Jesús', 'Erik', 'Amir', 'Jaime', 'Ian', 'Rubén', 'Aarón', 'Iván', 'Pau', 'Víctor', 'Guillermo', 'Luis', 'Mohamed', 'Pedro', 'Julen', 'Unai', 'Rafael', 'Santiago', 'Saúl', 'Alberto', 'Noah', 'Aitor', 'Joel', 'Nil', 'Jan', 'Pol', 'Raúl', 'Matías', 'Martí', 'Fernando', 'Andrés', 'Rayan', 'Alonso', 'Ismael', 'Asier', 'Biel', 'Ander', 'Aleix', 'Axel', 'Alan', 'Ignacio', 'Fabio', 'Neizan', 'Jon', 'Teo', 'Isaac', 'Arnau', 'Luka', 'Max', 'Imran', 'Youssef', 'Anas', 'Elías'];
-    var lastNames = ['García', 'Alba', 'Esparza', 'Gómez', 'Velázquez', 'Hernández', 'García', 'Martínez', 'López', 'González', 'Pérez', 'Rodríguez', 'Sánchez', 'Ramírez', 'Cruz', 'Gómez', 'Flores', 'Morales', 'Vázquez', 'Jiménez', 'Reyes', 'Díaz', 'Torres', 'Gutiérrez', 'Ruiz', 'Mendoza', 'Aguilar', 'Méndez', 'Moreno', 'Ortíz', 'Juárez', 'Castillo', 'Álvarez', 'Romero', 'Ramos', 'Rivera', 'Chávez', 'De la Cruz', 'Domínguez', 'Guzmán', 'Velázquez', 'Santiago', 'Herrera', 'Castro', 'Vargas', 'Medina', 'Rojas', 'Muñóz', 'Luna', 'Contreras', 'Bautista', 'Salazar', 'Ortega', 'Guerrero ', 'Estrada'];
+    let girlNames = ['María', 'Andrea', 'Ana', 'Lucía', 'Sofía', 'Martina', 'María', 'Julia', 'Paula', 'Valeria', 'Emma', 'Daniela', 'Carla', 'Alba', 'Noa', 'Alma', 'Sara', 'Carmen', 'Vega', 'Lara', 'Mia', 'Valentina', 'Olivia', 'Claudia', 'Jimena', 'Lola', 'Chloe', 'Aitana', 'Abril', 'Ana', 'Laia', 'Triana', 'Candela', 'Alejandra', 'Elena', 'Vera', 'Manuela', 'Adriana', 'Inés', 'Marta', 'Carlota', 'Irene', 'Victoria', 'Blanca', 'Marina', 'Laura', 'Rocío', 'Alicia', 'Clara', 'Nora', 'Lia', 'Ariadna', 'Zoe', 'Amira', 'Gala', 'Celia', 'Leire', 'Eva', 'Ángela', 'Andrea', 'África', 'Luna', 'Ainhoa', 'Ainara', 'India', 'Nerea', 'Ona', 'Elsa', 'Isabel', 'Leyre', 'Gabriela', 'Aina', 'Cayetana', 'Iria', 'Jana', 'Mar', 'Cloe', 'Lina', 'Julieta', 'Adara', 'Naia', 'Iris', 'Nour', 'Mara', 'Helena', 'Yasmín', 'Natalia', 'Arlet', 'Diana', 'Aroa', 'Amaia', 'Cristina', 'Nahia', 'Isabella', 'Malak', 'Elia', 'Carolina', 'Berta', 'Fátima', 'Nuria', 'Azahara', 'Macarena', 'Aurora'];
+    let boyNames = ['Juan', 'Antonio', 'Pedro', 'Hugo', 'Mateo', 'Martín', 'Lucas', 'Leo', 'Daniel', 'Alejandro', 'Manuel', 'Pablo', 'Álleto', 'Adrián', 'Enzo', 'Mario', 'Diego', 'David', 'Oliver', 'Marcos', 'Thiago', 'Marco', 'Álex', 'Javier', 'Izan', 'Bruno', 'Miguel', 'Antonio', 'Gonzalo', 'Liam', 'Gael', 'Marc', 'Carlos', 'Juan', 'Ángel', 'Dylan', 'Nicolás', 'José', 'Sergio', 'Gabriel', 'Luca', 'Jorge', 'Darío', 'Íker', 'Samuel', 'Eric', 'Adam', 'Héctor', 'Francisco', 'Rodrigo', 'Jesús', 'Erik', 'Amir', 'Jaime', 'Ian', 'Rubén', 'Aarón', 'Iván', 'Pau', 'Víctor', 'Guillermo', 'Luis', 'Mohamed', 'Pedro', 'Julen', 'Unai', 'Rafael', 'Santiago', 'Saúl', 'Alberto', 'Noah', 'Aitor', 'Joel', 'Nil', 'Jan', 'Pol', 'Raúl', 'Matías', 'Martí', 'Fernando', 'Andrés', 'Rayan', 'Alonso', 'Ismael', 'Asier', 'Biel', 'Ander', 'Aleix', 'Axel', 'Alan', 'Ignacio', 'Fabio', 'Neizan', 'Jon', 'Teo', 'Isaac', 'Arnau', 'Luka', 'Max', 'Imran', 'Youssef', 'Anas', 'Elías'];
+    let lastNames = ['García', 'Alba', 'Esparza', 'Gómez', 'Velázquez', 'Hernández', 'García', 'Martínez', 'López', 'González', 'Pérez', 'Rodríguez', 'Sánchez', 'Ramírez', 'Cruz', 'Gómez', 'Flores', 'Morales', 'Vázquez', 'Jiménez', 'Reyes', 'Díaz', 'Torres', 'Gutiérrez', 'Ruiz', 'Mendoza', 'Aguilar', 'Méndez', 'Moreno', 'Ortíz', 'Juárez', 'Castillo', 'Álletez', 'Romero', 'Ramos', 'Rivera', 'Chávez', 'De la Cruz', 'Domínguez', 'Guzmán', 'Velázquez', 'Santiago', 'Herrera', 'Castro', 'letgas', 'Medina', 'Rojas', 'Muñóz', 'Luna', 'Contreras', 'Bautista', 'Salazar', 'Ortega', 'Guerrero ', 'Estrada'];
 
-    var gender = Math.floor(Math.random() * (1 - 0 + 1) + 0);
-    var nameQuantity = Math.floor(Math.random() * (1 - 0 + 1) + 0);
+    let gender = Math.floor(Math.random() * (1 - 0 + 1) + 0);
+    let nameQuantity = Math.floor(Math.random() * (1 - 0 + 1) + 0);
 
-    var previousNumber = -1;
+    let previousNumber = -1;
 
     for(i = 0; i < (nameQuantity + 1); i++)
     {
@@ -53,12 +53,12 @@ function randomName()
 
 function setKey(name)
 {
-    var i;
+    let i;
     
     name = name.toUpperCase();
     name = name.split(" ");
 
-    var finalKey = "";
+    let finalKey = "";
 
     for(i = 0; i < name.length; i++)
     {
@@ -96,13 +96,13 @@ function addTuple(name = undefined, key = undefined, salary = undefined)
 }
 
 // Functionality to open the add registration
-var buttonAddRegistration = document.getElementsByClassName("addButton");
+let buttonAddRegistration = document.getElementsByClassName("addButton");
 
 buttonAddRegistration[0].addEventListener("click", function()
 {
-    var formAddRegistration = document.getElementsByClassName("divFormAdd");
-    var form = formAddRegistration[0];
-    var button = buttonAddRegistration[0];
+    let formAddRegistration = document.getElementsByClassName("divFormAdd");
+    let form = formAddRegistration[0];
+    let button = buttonAddRegistration[0];
     if(form.style.display == "block")
     {
         form.style.display = "none";
@@ -121,35 +121,55 @@ buttonAddRegistration[0].addEventListener("click", function()
 });
 
 // Functionality to the add registration
-var buttonAddForm = document.getElementsByClassName("addButtonForm");
+let buttonAddForm = document.getElementsByClassName("addButtonForm");
 
 buttonAddForm[0].addEventListener("click", function()
 {
     // Styling the page
-    var formAddRegistration = document.getElementsByClassName("divFormAdd");
-    var form = formAddRegistration[0];
-    var button = buttonAddRegistration[0];
+    let formAddRegistration = document.getElementsByClassName("divFormAdd");
+    let form = formAddRegistration[0];
+    let button = buttonAddRegistration[0];
     form.style.display = "none";
     button.textContent = "Add registration";
     button.style.backgroundColor = "#1b6600";
 
     // Getting the info
-    var name = document.getElementById("name").value;
-    var id = document.getElementById("id").value;
-    var salary = document.getElementById("salary").value;
+    let name = document.getElementById("name").value;
+    let id = document.getElementById("id").value;
+    let salary = document.getElementById("salary").value;
     document.getElementById("name").value = "";
     document.getElementById("id").value = "";
     document.getElementById("salary").value = "";
 
-    db.push(addTuple(name, id, salary));
+    let newTuple = addTuple(name, id, salary);
+    db.push(newTuple);
 
+    let newNameTable = document.createElement("th");
+    newNameTable.innerHTML = newTuple.name;
+
+    let newIDTable = document.createElement("th");
+    newIDTable.innerHTML = newTuple.key;
+
+    let newSalaryTable = document.createElement("th");
+    newSalaryTable.innerHTML = "$ " + newTuple.salary;
+
+    let newRow = document.createElement("tr");
+    newRow.appendChild(newNameTable);
+    newRow.appendChild(newIDTable);
+    newRow.appendChild(newSalaryTable);
+
+    let getTable = document.getElementsByTagName("table");
+    let table = getTable[0];
+    table.appendChild(newRow);
+
+    // Hiding the empty registers warning
     if(db.length == 1)
     {
-        var noRegistersDiv = document.getElementsByClassName("noRegistersDiv");
+        let noRegistersDiv = document.getElementsByClassName("noRegistersDiv");
         noRegisters = noRegistersDiv[0];
         noRegisters.style.display = "none";
 
-        var divTable = document.getElementsByClassName("divTable");
+        let divTable = document.getElementsByClassName("divTable");
         table = divTable[0];
         table.style.display = "block";
     }

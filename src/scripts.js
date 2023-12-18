@@ -153,10 +153,15 @@ buttonAddForm[0].addEventListener("click", function()
     let newSalaryTable = document.createElement("th");
     newSalaryTable.innerHTML = "$ " + newTuple.salary;
 
+    let newEditTable = document.createElement("th");
+    let newRemoveTable = document.createElement("th");
+
     let newRow = document.createElement("tr");
     newRow.appendChild(newNameTable);
     newRow.appendChild(newIDTable);
     newRow.appendChild(newSalaryTable);
+    newRow.appendChild(newEditTable);
+    newRow.appendChild(newRemoveTable);
 
     let getTable = document.getElementsByTagName("table");
     let table = getTable[0];

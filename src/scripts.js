@@ -1,3 +1,4 @@
+// Functions for random user generation
 let db = [];
 
 function randomName()
@@ -155,9 +156,81 @@ buttonAddForm[0].addEventListener("click", function()
 
     let newEditTable = document.createElement("th");
     newEditTable.innerHTML = "Edit";
+    newEditTable.className = "editButton";
+
+    // Functionality to the update operation
+    newEditTable.addEventListener("click", function()
+    {
+        let keySearching = newEditTable.parentNode.childNodes[1].innerHTML;
+        for(let i = 2; i < newEditTable.parentNode.parentNode.childNodes.length; i++)
+        {
+            if(newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML == keySearching)
+            {
+                // Editing name
+                let editName = document.createElement("input");
+                editName.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].innerHTML;
+                editName.setAttribute("type", "text");
+                editName.setAttribute("id", "editName");
+                editName.setAttribute("name", "name");
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].appendChild(editName);
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].innerHTML = "";
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].appendChild(editName);
+
+                // Editing id
+                let editId = document.createElement("input");
+                editId.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML;
+                editId.setAttribute("type", "text");
+                editId.setAttribute("id", "editId");
+                editId.setAttribute("name", "id");
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].appendChild(editId);
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML = "";
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].appendChild(editId);
+
+                // Editing salary
+                let editSalary = document.createElement("input");
+                editSalary.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML.substr(2);
+                editSalary.setAttribute("type", "text");
+                editSalary.setAttribute("id", "editSalary");
+                editSalary.setAttribute("name", "salary");
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].appendChild(editSalary);
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML = "";
+                newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].appendChild(editSalary);
+
+                // Changing the edit button
+                if(newEditTable.parentNode.parentNode.childNodes[i].childNodes[3].innerHTML == "Edit")
+                {
+                    let editButton = newEditTable.parentNode.parentNode.childNodes[i].childNodes[3];
+                    editButton.style.backgroundColor = "#1b6600";
+                    editButton.textContent = "Save";
+                }
+                // Saving the updated information
+                else
+                {
+                    let editButton = newEditTable.parentNode.parentNode.childNodes[i].childNodes[3];
+                    editButton.style.backgroundColor = "#202020";
+                    editButton.textContent = "Edit";
+
+                    // Saving the info
+                    let name = document.getElementById("editName").value;
+                    let id = document.getElementById("editId").value;
+                    let salary = document.getElementById("editSalary").value;
+                    document.getElementById("editName").value = "";
+                    document.getElementById("editId").value = "";
+                    document.getElementById("editSalary").value = "";
+
+                    db[i].name = name;
+                    db[i].key = id;
+                    db[i].salary = salary;
+
+                    // AQUI DEBE IR LA LÓGICA PARA ELIMINAR LOS INPUT Y REEMPLAZARLO POR EL TEXTO BASE COMÚN y ya
+                }
+            }
+        }
+    });
 
     let newRemoveTable = document.createElement("th");
     newRemoveTable.innerHTML = "Remove";
+    newRemoveTable.className = "removeButton";
 
     let newRow = document.createElement("tr");
     newRow.appendChild(newNameTable);

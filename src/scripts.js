@@ -204,6 +204,7 @@ buttonAddForm[0].addEventListener("click", function()
                     newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].appendChild(editSalary);
                     newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML = "";
                     newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].appendChild(editSalary);
+                    break;
                 }
                 // Second click: Saving the updated information
                 else
@@ -233,6 +234,7 @@ buttonAddForm[0].addEventListener("click", function()
                     newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].innerHTML = newTuple.name;
                     newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML = newTuple.key;
                     newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML = "$ " + newTuple.salary;
+                    break;
                 }
             }
         }
@@ -241,6 +243,23 @@ buttonAddForm[0].addEventListener("click", function()
     let newRemoveTable = document.createElement("th");
     newRemoveTable.innerHTML = "Remove";
     newRemoveTable.className = "removeButton";
+    
+    // Functionality to the delete operation
+    newRemoveTable.addEventListener("click", function()
+    {
+        let keySearching = newRemoveTable.parentNode.childNodes[1].innerHTML;
+        for(let i = 2; i < newRemoveTable.parentNode.parentNode.childNodes.length; i++)
+        {
+            // Checking the table row that we're looking for, if it is, we get in this if
+            if(newRemoveTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML == keySearching)
+            {
+                let row = newRemoveTable.parentNode.parentNode.childNodes[i];
+                row.remove();
+                db.splice(i - 2, 1);
+                break;
+            }
+        }
+    });
 
     let newRow = document.createElement("tr");
     newRow.appendChild(newNameTable);

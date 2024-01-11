@@ -164,46 +164,48 @@ buttonAddForm[0].addEventListener("click", function()
         let keySearching = newEditTable.parentNode.childNodes[1].innerHTML;
         for(let i = 2; i < newEditTable.parentNode.parentNode.childNodes.length; i++)
         {
+            // Checking the table row that we're looking for, if it is, we get in this if
             if(newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML == keySearching)
             {
-                // Editing name
-                let editName = document.createElement("input");
-                editName.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].innerHTML;
-                editName.setAttribute("type", "text");
-                editName.setAttribute("id", "editName");
-                editName.setAttribute("name", "name");
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].appendChild(editName);
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].innerHTML = "";
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].appendChild(editName);
-
-                // Editing id
-                let editId = document.createElement("input");
-                editId.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML;
-                editId.setAttribute("type", "text");
-                editId.setAttribute("id", "editId");
-                editId.setAttribute("name", "id");
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].appendChild(editId);
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML = "";
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].appendChild(editId);
-
-                // Editing salary
-                let editSalary = document.createElement("input");
-                editSalary.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML.substr(2);
-                editSalary.setAttribute("type", "text");
-                editSalary.setAttribute("id", "editSalary");
-                editSalary.setAttribute("name", "salary");
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].appendChild(editSalary);
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML = "";
-                newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].appendChild(editSalary);
-
-                // Changing the edit button
+                // First click: Editing the information
                 if(newEditTable.parentNode.parentNode.childNodes[i].childNodes[3].innerHTML == "Edit")
                 {
+                    // Changing the edit button
                     let editButton = newEditTable.parentNode.parentNode.childNodes[i].childNodes[3];
                     editButton.style.backgroundColor = "#1b6600";
                     editButton.textContent = "Save";
+
+                    // Editing name
+                    let editName = document.createElement("input");
+                    editName.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].innerHTML;
+                    editName.setAttribute("type", "text");
+                    editName.setAttribute("id", "editName");
+                    editName.setAttribute("name", "name");
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].appendChild(editName);
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].innerHTML = "";
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].appendChild(editName);
+
+                    // Editing id
+                    let editId = document.createElement("input");
+                    editId.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML;
+                    editId.setAttribute("type", "text");
+                    editId.setAttribute("id", "editId");
+                    editId.setAttribute("name", "id");
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].appendChild(editId);
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML = "";
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].appendChild(editId);
+
+                    // Editing salary
+                    let editSalary = document.createElement("input");
+                    editSalary.value = newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML.substr(2);
+                    editSalary.setAttribute("type", "text");
+                    editSalary.setAttribute("id", "editSalary");
+                    editSalary.setAttribute("name", "salary");
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].appendChild(editSalary);
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML = "";
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].appendChild(editSalary);
                 }
-                // Saving the updated information
+                // Second click: Saving the updated information
                 else
                 {
                     let editButton = newEditTable.parentNode.parentNode.childNodes[i].childNodes[3];
@@ -218,11 +220,19 @@ buttonAddForm[0].addEventListener("click", function()
                     document.getElementById("editId").value = "";
                     document.getElementById("editSalary").value = "";
 
-                    db[i].name = name;
-                    db[i].key = id;
-                    db[i].salary = salary;
+                    let newTuple = addTuple(name, id, salary);
 
-                    // AQUI DEBE IR LA LÓGICA PARA ELIMINAR LOS INPUT Y REEMPLAZARLO POR EL TEXTO BASE COMÚN y ya
+                    db[i - 2].name = newTuple.name;
+                    db[i - 2].key = newTuple.key;
+                    db[i - 2].salary = newTuple.salary;
+
+                    editName.remove();
+                    editId.remove();
+                    editSalary.remove();
+
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[0].innerHTML = newTuple.name;
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[1].innerHTML = newTuple.key;
+                    newEditTable.parentNode.parentNode.childNodes[i].childNodes[2].innerHTML = "$ " + newTuple.salary;
                 }
             }
         }

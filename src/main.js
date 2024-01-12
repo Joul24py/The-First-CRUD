@@ -2,7 +2,7 @@ const { app, BrowserWindow } = require('electron');
 
 const createWindow = () => {
     const win = new BrowserWindow({
-        icon: 'C:/Users/alexe/Desktop/test-thefirstcrud-electron/src/icon.png',
+        icon: 'icon.png',
         autoHideMenuBar: true,
         width: 800,
         height: 600
@@ -16,5 +16,8 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit()
-  })
+    if(process.platform !== 'darwin')
+    {
+        app.quit();
+    }
+});

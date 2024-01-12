@@ -18,6 +18,8 @@ Once the previous requirements were done, the program has to present the user a 
 5. Delete a user giving as a parameter the worker name or the worker key.
 6. Update the key, name or salary of a worker.
 
+---
+
 Taking as a reference this project is how The First CRUD reworks it with new additions and some personal modifications trying to develop the project with "graphic interface" using mostly frontend web technologies (after doing tests with Python and its GUI libraries).
 
 This program lets the user do the four CRUD operations starting with the main window of the program.
